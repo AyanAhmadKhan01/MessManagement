@@ -1,6 +1,18 @@
-import { Card } from "@/components/ui/card";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton";
-import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+
 import { MdPeople, MdAttachMoney, MdCheckCircle } from "react-icons/md";
 
 const stats = [
@@ -39,7 +51,7 @@ export default function DashboardPage() {
       </header>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         {stats.map((stat) => (
-          <Card key={stat.label} className="p-6 flex flex-col gap-2 shadow-sm">
+          <Card key={stat.label} className="p-6 flex  flex-col gap-2 shadow-sm">
             <div className="flex items-center gap-3 mb-2">
               {stat.icon}
               <span className="text-lg font-semibold text-gray-700">{stat.label}</span>
@@ -49,10 +61,27 @@ export default function DashboardPage() {
           </Card>
         ))}
       </div>
-      <Card className="p-6 shadow-sm">
+      <Card className="p-6 shadow-sm ">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold text-gray-700">Recent Users</h2>
-          <Button size="sm" variant="outline">View All</Button>
+         <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button className={'border-1 border-[rgba(0,0,0,.07)]'}>Show Dialog</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent className={''}>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Continue</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
         </div>
         <div className="overflow-x-auto">
           <table className="min-w-full text-left">

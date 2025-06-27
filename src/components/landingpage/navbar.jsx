@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ModeToggle } from "@/app/modeToggle";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -9,7 +10,7 @@ export default function Navbar() {
     const navButton = [
         {href: '/', text: 'Home'},
         {href: '/', text: 'Features'},
-        {href: '/', text: 'How it Works'},
+        {href: '/', text: 'How It Works'},
         {href: '/', text: 'Contact Us'},
     ]
 
@@ -19,9 +20,10 @@ export default function Navbar() {
           <h1>Mess Management</h1>
           <div className="flex justify-between ml-3">
          {navButton.map((l, i) => (
-            <Link className={`mx-5 ${l.href === pathname ? 'border-b-2 border-transparent hover:border-b-destructive transition-all duration-300' : ''}`} href={l.href} key={i}>{l.text}</Link>
+            <Link className={`mx-5 ${l.href === pathname ? 'border-b-2 border-transparent hover:border-b-chart-5 transition-all duration-300' : ''}`} href={l.href} key={i}>{l.text}</Link>
          ))}
              </div>
+             <ModeToggle />
         </div>
    
     </>

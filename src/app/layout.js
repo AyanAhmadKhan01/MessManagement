@@ -2,6 +2,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import "@fontsource/roboto"; 
 import DashboardLayout from '../components/dashboard/DashboardLayout';
+import { ModeToggle } from "./modeToggle";
 
 
 export default function RootLayout({ children }) {
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
             ) : (
               children
             )}
+  
           </ThemeProvider>
       </body>
     </html>

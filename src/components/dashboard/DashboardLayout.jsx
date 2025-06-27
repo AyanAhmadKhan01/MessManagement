@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "@/components/ui/card";
-import Sidebar from "./Sidebar";
+import Sidebar from "./dashboardSidebar";
 
 export default function DashboardLayout({ children }) {
   return (
