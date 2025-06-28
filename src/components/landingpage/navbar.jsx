@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ModeToggle } from "@/app/modeToggle";
+import { Button } from "../ui/button";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -23,7 +24,10 @@ export default function Navbar() {
             <Link className={`mx-5 ${l.href === pathname ? 'border-b-2 border-transparent hover:border-b-chart-5 transition-all duration-300' : ''}`} href={l.href} key={i}>{l.text}</Link>
          ))}
              </div>
+             <div>
              <ModeToggle />
+             <Button className={'cursor-pointer'}><Link href={'/dashboard'}>Login</Link></Button>
+             </div>
         </div>
    
     </>

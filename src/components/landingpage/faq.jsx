@@ -5,57 +5,76 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
-export function Faq() {
+import {
+  ScanLine,
+  BarChart2,
+  ShieldCheck,
+  Settings
+} from 'lucide-react';
+
+
+export default function Faq() {
+ const ffa = [
+  {
+    value: 'item-1',
+    heading: 'Instant QR Attendance',
+    icon: 'ScanLine', 
+    para: 'Easily mark attendance by scanning a unique QR code at each table. No login or extra steps required—just point, scan, and you’re done.',
+    secondPara: 'This system ensures accuracy and speed, reducing wait times and simplifying the process for both users and admins.'
+  },
+  {
+    value: 'item-2',
+    heading: 'Real-Time Dashboard',
+    icon: 'BarChart2',
+    para: 'Track attendance, user activity, and system logs with a clean, real-time dashboard. All data updates instantly as users interact with the system.',
+    secondPara: 'Gain insights and export reports whenever needed—ideal for events, schools, or team check-ins.'
+  },
+  {
+    value: 'item-3',
+    heading: 'Secure & Private',
+    icon: 'ShieldCheck',
+    para: 'All data is securely stored with encryption protocols to ensure privacy. Only authorized personnel can access records.',
+    secondPara: 'Our platform is GDPR-compliant and built with privacy-first architecture to protect user identities.'
+  },
+  {
+    value: 'item-4',
+    heading: 'Easy Setup & Customization',
+    icon: 'Settings',
+    para: 'Deploy in minutes with no technical setup required. Customize your QR design, attendance limits, or access roles from the admin panel.',
+    secondPara: 'Whether you\'re hosting a one-time event or running daily check-ins, you can tailor the system to your needs effortlessly.'
+  }
+];
+
+
   return (
+    <div className="max-w-[1000px] w-[100%] m-auto mt-20">
+      <h1 className="text-chart-5 text-6xl tracking-tighter text-center mb-10">Frequently Asked Questions</h1>
     <Accordion
       type="single"
       collapsible
       className="w-full"
       defaultValue="item-1"
     >
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Product Information</AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-4 text-balance">
+      {ffa.map((f, i) => (
+      <AccordionItem key={i} className={'border-transparent my-3'} value={f.value}>
+
+        <AccordionTrigger className={'flex justify-between items-center bg-[rgba(255,255,255,.05)] p-4 border-1 border-[rgba(255,255,255,.03)]'}>
+               {f.icon === 'ScanLine' && <ScanLine className="w-6 h-6 text-primary" />}
+      {f.icon === 'BarChart2' && <BarChart2 className="w-6 h-6 text-primary" />}
+      {f.icon === 'ShieldCheck' && <ShieldCheck className="w-6 h-6 text-primary" />}
+      {f.icon === 'Settings' && <Settings className="w-6 h-6 text-primary" />}
+          {f.heading}</AccordionTrigger>
+        <AccordionContent className="flex flex-col gap-4 text-balance py-5 px-2">
           <p>
-            Our flagship product combines cutting-edge technology with sleek
-            design. Built with premium materials, it offers unparalleled
-            performance and reliability.
+          {f.para}
           </p>
           <p>
-            Key features include advanced processing capabilities, and an
-            intuitive user interface designed for both beginners and experts.
-          </p>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Shipping Details</AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-4 text-balance">
-          <p>
-            We offer worldwide shipping through trusted courier partners.
-            Standard delivery takes 3-5 business days, while express shipping
-            ensures delivery within 1-2 business days.
-          </p>
-          <p>
-            All orders are carefully packaged and fully insured. Track your
-            shipment in real-time through our dedicated tracking portal.
+           {f.secondPara}
           </p>
         </AccordionContent>
       </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>Return Policy</AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-4 text-balance">
-          <p>
-            We stand behind our products with a comprehensive 30-day return
-            policy. If you&apos;re not completely satisfied, simply return the
-            item in its original condition.
-          </p>
-          <p>
-            Our hassle-free return process includes free return shipping and
-            full refunds processed within 48 hours of receiving the returned
-            item.
-          </p>
-        </AccordionContent>
-      </AccordionItem>
+          ))}
     </Accordion>
+    </div>
   )
 }

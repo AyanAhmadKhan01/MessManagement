@@ -24,7 +24,7 @@ const card = [
 
     return(
         <>
-        <div className="flex flex-col items-center h-[150vh]">
+        <div className="flex flex-col items-center ">
             <h1 className="text-chart-5 text-6xl tracking-wider">Features</h1>
 <div className="grid grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] gap-2 mt-10">
     {card.map((c, i) => (

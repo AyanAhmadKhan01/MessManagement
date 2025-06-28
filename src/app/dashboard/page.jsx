@@ -1,40 +1,12 @@
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+
 import { Button } from "@/components/ui/button"
-import { Skeleton } from "@/components/ui/skeleton";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DollarSign, Users, Activity, ChartNoAxesCombined, Eye } from "lucide-react";
+import { DashboardCharts } from "@/components/dashboard/dashboardCharts";
+import { Badge } from "@/components/ui/badge";
+import { DashboardDataTable } from "@/components/dashboard/dashboardDataTable";
+import { Separator } from "@/components/ui/separator";
 
-import { MdPeople, MdAttachMoney, MdCheckCircle } from "react-icons/md";
-
-const stats = [
-  {
-    label: "Total Users",
-    value: "1,245",
-    change: "+5.2%",
-    icon: <MdPeople className="text-blue-600" size={28} />,
-  },
-  {
-    label: "Profit (₹)",
-    value: "₹32,500",
-    change: "+2.1%",
-    icon: <MdAttachMoney className="text-green-600" size={28} />,
-  },
-  {
-    label: "Attendance",
-    value: "98.7%",
-    change: "+0.3%",
-    icon: <MdCheckCircle className="text-emerald-600" size={28} />,
-  },
-];
 
 const users = [
   { name: "Jani Jasmin", email: "jani@email.com", status: "Active" },
@@ -44,71 +16,74 @@ const users = [
 
 export default function DashboardPage() {
   return (
-    <div className="p-8 bg-gray-50 min-h-screen">
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-1">Dashboard</h1>
-        <p className="text-gray-500">Quick overview & recent activity</p>
-      </header>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        {stats.map((stat) => (
-          <Card key={stat.label} className="p-6 flex  flex-col gap-2 shadow-sm">
-            <div className="flex items-center gap-3 mb-2">
-              {stat.icon}
-              <span className="text-lg font-semibold text-gray-700">{stat.label}</span>
+    <>
+ <div className="flex items-center">
+    <h1 className="text-4xl font-bold mb-4 mt-3 ml-6">Dashboard</h1>
+     <Separator
+              orientation="vertical"
+              className="ml-9 data-[orientation=vertical]:h-18"
+            />
             </div>
-            <div className="text-3xl font-bold text-gray-900">{stat.value}</div>
-            <div className="text-sm text-green-600 font-medium">{stat.change}</div>
-          </Card>
-        ))}
-      </div>
-      <Card className="p-6 shadow-sm ">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-gray-700">Recent Users</h2>
-         <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button className={'border-1 border-[rgba(0,0,0,.07)]'}>Show Dialog</Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent className={''}>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-left">
-            <thead>
-              <tr className="border-b text-gray-500 text-sm">
-                <th className="py-2 px-4">Name</th>
-                <th className="py-2 px-4">Email</th>
-                <th className="py-2 px-4">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user, i) => (
-                <tr key={user.email} className="border-b last:border-0">
-                  <td className="py-2 px-4 font-medium text-gray-800 flex items-center gap-2">
-                    <Skeleton className="w-8 h-8 rounded-full bg-gray-200" />
-                    {user.name}
-                  </td>
-                  <td className="py-2 px-4 text-gray-600">{user.email}</td>
-                  <td className="py-2 px-4">
-                    <span className={`px-2 py-1 rounded text-xs font-semibold ${user.status === 'Active' ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-500'}`}>{user.status}</span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+    <Separator
+              orientation="horizontal"
+              className="mr-3 mb-9 data-[orientation=vertical]:h-9"
+            />
+    <div className="grid grid-cols-[repeat(auto-fit,_minmax(330px,_1fr))] gap-2 mx-4">
+      <Card>
+        <CardHeader className={'flex justify-between'}>
+          <CardTitle>Total Revenue</CardTitle>
+          <DollarSign  color="#FF0049"/>
+           </CardHeader>
+          <CardContent>
+            <h2 className="text-2xl font-semibold">$45,231.89</h2>
+            <p className="text-sm text-[#FF0049]">+20.1% from last month</p>
+          </CardContent>
       </Card>
-    </div>
-  );
+      <Card>
+        <CardHeader className={'flex justify-between'}>
+          <CardTitle>Subscriptions</CardTitle>
+          <Users  color="#FF0049"/>
+           </CardHeader>
+          <CardContent>
+            <h2 className="text-2xl font-semibold">+2350</h2>
+            <p className="text-sm text-[#FF0049]">+180.1% from last month</p>
+          </CardContent>
+      </Card>
+      <Card>
+        <CardHeader className={'flex justify-between'}>
+          <CardTitle>Sales</CardTitle>
+          < ChartNoAxesCombined  color="#FF0049"/>
+           </CardHeader>
+          <CardContent>
+            <h2 className="text-2xl font-semibold">+12,234</h2>
+            <p className="text-sm text-[#FF0049]">+19% from last month</p>
+          </CardContent>
+      </Card>
+      <Card>
+        <CardHeader className={'flex justify-between'}>
+          <CardTitle>Active Now</CardTitle>
+          <Activity  color="#FF0049"/>
+           </CardHeader>
+          <CardContent>
+            <h2 className="text-2xl font-semibold">+573</h2>
+            <p className="text-sm text-[#FF0049]">+201 since last hour</p>
+          </CardContent>
+      </Card>
+      </div>
+      <div className="flex gap-3">
+<div className="w-[50%] bg-[rgba(255,255,255,.04)] border-1 border-[rgba(255,255,255,.09)] p-3 rounded-2xl my-5 ml-4">
+  <div>
+    <Badge  variant={'outline'}>
+      <Eye className="text-[rgba(255,255,255,1)]"/>
+  <h1 className=" text-[rgba(255,255,255,.5)]">Live User Update</h1>
+  </Badge>
+  </div>
+<DashboardCharts />
+</div>
+<div className="w-[50%] my-4 mr-3 bg-[rgba(255,255,255,.04)] border-1 border-[rgba(255,255,255,.09)] p-3 rounded-2xl">
+<DashboardDataTable />
+</div>
+</div>
+    </>   
+  )
 } 
