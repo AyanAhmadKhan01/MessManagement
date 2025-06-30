@@ -30,22 +30,22 @@ const items = [
   },
   {
     title: "Attendance",
-    url: "/dashboard/attendance",
+    url: "/dashboard/userattendance",
     icon: CalendarCheck,
   },
   {
     title: "Your Plan",
-    url: "/dashboard/todaymenu",
+    url: "/dashboard/userplan",
     icon: ChefHat, 
   },
   {
     title: "User Menu",
-    url: "#",
+    url: "/dashboard/todaymenu",
     icon: Users,
   },
   {
     title: "Profile",
-    url: "#",
+    url: "/dashboard/profile",
     icon: User,
   },
 ]

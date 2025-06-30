@@ -70,8 +70,8 @@ export default function DashboardPage() {
           </CardContent>
       </Card>
       </div>
-      <div className="flex gap-3">
-<div className="w-[50%] bg-[rgba(255,255,255,.04)] border-1 border-[rgba(255,255,255,.09)] p-3 rounded-2xl my-5 ml-4">
+      <div className="flex flex-wrap xl:flex-nowrap gap-3">
+<div className=" lg:w-[50%] w-[95%] bg-[rgba(255,255,255,.04)] border-1 border-[rgba(255,255,255,.09)] p-3 rounded-2xl mt-5 ml-4">
   <div>
     <Badge  variant={'outline'}>
       <Eye className="text-[rgba(255,255,255,1)]"/>
@@ -80,7 +80,7 @@ export default function DashboardPage() {
   </div>
 <DashboardCharts />
 </div>
-<div className="w-[50%] my-4 mr-3 bg-[rgba(255,255,255,.04)] border-1 border-[rgba(255,255,255,.09)] p-3 rounded-2xl">
+<div className="lg:w-[50%] w-[95%] mt-5 ml-4 xl:ml-0 mr-3 mb-10 bg-[rgba(255,255,255,.04)] border-1 border-[rgba(255,255,255,.09)] p-3 rounded-2xl">
 <DashboardDataTable />
 </div>
 </div>
