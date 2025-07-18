@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start Backend Server",
+			"type": "shell",
+			"command": "cd \"d:\\mess managmenet july\\messmanagentworkingcopy-main\\backend\" && node index.js",
+			"group": "build",
+			"isBackground": true
+		}
+	]
+}
