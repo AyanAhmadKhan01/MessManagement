@@ -199,3 +199,124 @@ export const resetPassword = asyncHandler(async (req, res) => {
 
     res.json({ message: `Password reset for ${updatedUser.name}` });
 });
+
+// Get current user profile
+export const getUserProfile = asyncHandler(async (req, res) => {
+    const userId = req.user?.userId || req.headers['user-id']; // Get from auth middleware or header
+    
+    if (!userId) {
+        return res.status(401).json({ message: 'User authentication required' });
+    }
+
+    const user = await User.findOne({"userId": userId}, {password: 0, cpassword: 0}).lean();
+
+    if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json(user);
+});
+
+// Update user profile
+export const updateUserProfile = asyncHandler(async (req, res) => {
+    const userId = req.user?.userId || req.headers['user-id']; // Get from auth middleware or header
+    const updateData = req.body;
+
+    if (!userId) {
+        return res.status(401).json({ message: 'User authentication required' });
+    }
+
+    // Remove sensitive fields that shouldn't be updated via profile
+    delete updateData.password;
+    delete updateData.cpassword;
+    delete updateData.userId;
+
+    const user = await User.findOne({"userId": userId}).exec();
+
+    if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Update user fields
+    Object.keys(updateData).forEach(key => {
+        if (updateData[key] !== undefined) {
+            user[key] = updateData[key];
+        }
+    });
+
+    const updatedUser = await user.save();
+
+    // Return user without password fields
+    const { password, cpassword, ...userResponse } = updatedUser.toObject();
+    res.json(userResponse);
+});
+
+// Change user password
+export const changeUserPassword = asyncHandler(async (req, res) => {
+    const userId = req.user?.userId || req.headers['user-id']; // Get from auth middleware or header
+    const { currentPassword, newPassword, confirmPassword } = req.body;
+
+    if (!userId) {
+        return res.status(401).json({ message: 'User authentication required' });
+    }
+
+    if (!currentPassword || !newPassword || !confirmPassword) {
+        return res.status(400).json({ message: 'All password fields are required' });
+    }
+
+    if (newPassword !== confirmPassword) {
+        return res.status(400).json({ message: 'New passwords do not match' });
+    }
+
+    if (newPassword.length < 6) {
+        return res.status(400).json({ message: 'Password must be at least 6 characters' });
+    }
+
+    const user = await User.findOne({"userId": userId}).exec();
+
+    if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Verify current password
+    const isCurrentPasswordValid = await bcrypt.compare(currentPassword, user.password);
+    if (!isCurrentPasswordValid) {
+        return res.status(400).json({ message: 'Current password is incorrect' });
+    }
+
+    // Hash new password
+    const hashedNewPassword = await bcrypt.hash(newPassword, 12);
+    
+    user.password = hashedNewPassword;
+    user.cpassword = hashedNewPassword;
+
+    await user.save();
+
+    res.json({ message: 'Password changed successfully' });
+});
+
+// Update notification preferences
+export const updateNotificationPreferences = asyncHandler(async (req, res) => {
+    const userId = req.user?.userId || req.headers['user-id']; // Get from auth middleware or header
+    const notificationData = req.body;
+
+    if (!userId) {
+        return res.status(401).json({ message: 'User authentication required' });
+    }
+
+    const user = await User.findOne({"userId": userId}).exec();
+
+    if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Update notification preferences (assuming they're stored in user document)
+    user.notificationPreferences = {
+        ...user.notificationPreferences,
+        ...notificationData
+    };
+
+    await user.save();
+
+    res.json({ message: 'Notification preferences updated successfully', preferences: user.notificationPreferences });
+});

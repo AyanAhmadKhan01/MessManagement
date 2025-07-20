@@ -254,20 +254,7 @@ export default function DashboardLayout({ children }) {
 
         <div className="p-4 border-t border-[rgba(255,255,255,0.1)]">
           <div className="space-y-3">
-            <Link href="/dashboard/admin/settings">
-              <div className={`group flex items-center ${sidebarCollapsed ? "lg:justify-center lg:px-2" : ""} p-3 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-all duration-300 cursor-pointer`}
-                   title={sidebarCollapsed ? "Settings" : ""}>
-                <div className="p-2 bg-[rgba(255,255,255,0.05)] rounded-lg group-hover:bg-[#FF0049]/10 transition-all duration-300 flex-shrink-0">
-                  <Settings className="h-4 w-4 text-gray-400 group-hover:text-[#FF0049]" />
-                </div>
-                {!sidebarCollapsed && (
-                  <span className="text-sm text-gray-400 group-hover:text-white transition-colors duration-300 ml-3 lg:block">
-                    Settings
-                  </span>
-                )}
-              </div>
-            </Link>
-            
+              
             <div 
               className={`group flex items-center ${sidebarCollapsed ? "lg:justify-center lg:px-2" : ""} p-3 rounded-lg hover:bg-red-500/10 transition-all duration-300 cursor-pointer`}
               title={sidebarCollapsed ? "Logout" : ""}

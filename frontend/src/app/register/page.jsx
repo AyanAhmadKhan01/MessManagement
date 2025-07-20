@@ -16,6 +16,7 @@ import { MdEmail, MdLock, MdPerson, MdPhone } from "react-icons/md"
 import { useRouter } from "next/navigation"
 import { authService } from "@/utils/authService"
 
+
 export default function Register() {
   const [form, setForm] = useState({ 
     name: "", 
@@ -52,7 +53,8 @@ export default function Register() {
       try {
         const result = await authService.register(form)
         
-        if (result.success) {
+        if (result.success) {
+
           const dashboardRoute = authService.getDashboardRoute()
           router.push(dashboardRoute)
         } else {
@@ -72,13 +74,13 @@ export default function Register() {
 
   return (
     <div className="bg-[#141414] ">
-      <div className="flex justify-center items-center h-[100vh]  bg-[radial-gradient(circle_800px_at_50%_300px,_rgba(16,185,129,0.35),_transparent)]">
+      <div className="flex justify-center items-center h-[100vh] ">
         <Card className="w-full max-w-sm">
           <CardHeader>
-            <CardTitle className={'text-2xl text-[rgba(16,185,129,.89)]'}>Create an Account</CardTitle>
+            <CardTitle className={'text-2xl text-[rgba(255,32,86,1)]'}>Create an Account</CardTitle>
             <CardDescription>Enter your details below to register</CardDescription>
             <CardAction>
-              <Button className={'text-[rgba(16,185,129,.69)] cursor-pointer'} variant="link" type="button" onClick={goToLogin}>Login</Button>
+              <Button className={'hover:text-[#ff2056] cursor-pointer'} variant="link" type="button" onClick={goToLogin}>Login</Button>
             </CardAction>
           </CardHeader>
           <CardContent>
@@ -198,7 +200,7 @@ export default function Register() {
                   <span id="cpassword-error" className="text-red-500 text-xs mt-1">{errors.cpassword}</span>
                 )}
               </div>
-              <Button type="submit" className="w-full bg-[rgba(16,185,129,.89)]" disabled={loading}>
+              <Button type="submit" className="w-full bg-[#ff2056] text-white" disabled={loading}>
                 {loading ? 'Creating Account...' : 'Register'}
               </Button>
             </form>

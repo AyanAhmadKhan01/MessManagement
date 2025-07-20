@@ -44,7 +44,8 @@ function UserPlanPage() {
     attendancePercentage: 0,
     totalSpent: 0,
     planStatus: 'inactive'
-  });
+  });
+
   const getPlanTypeColor = (type) => {
     switch (type) {
       case "Daily": return "bg-blue-500/20 text-blue-400 border-blue-500/30";
@@ -52,7 +53,8 @@ function UserPlanPage() {
       case "Monthly": return "bg-purple-500/20 text-purple-400 border-purple-500/30";
       default: return "bg-gray-500/20 text-gray-400 border-gray-500/30";
     }
-  };
+  };
+
   const fetchAllPlans = async () => {
     try {
       const response = await fetch(`${PLAN_BASE}/plans`);
@@ -79,7 +81,8 @@ function UserPlanPage() {
       });
       setAllPlans([]);
     }
-  };
+  };
+
   const fetchUserPlan = async () => {
     try {
       const currentUser = authService.getCurrentUser();
@@ -90,30 +93,35 @@ function UserPlanPage() {
       
       console.log("User plan response:", data);
       
-      if (data.success && Array.isArray(data.data)) {
+      if (data.success && Array.isArray(data.data)) {
+
         const userPlanData = data.data.find(plan => 
           plan.userId === currentUser.userId || 
           plan.user_id === currentUser.userId
         );
         
         console.log("Found user plan:", userPlanData);
-        setUserPlan(userPlanData);
+        setUserPlan(userPlanData);
+
         const userPlans = data.data.filter(plan => 
           plan.userId === currentUser.userId || 
           plan.user_id === currentUser.userId
         );
         setPlanHistory(userPlans);
         
-        if (userPlanData && allPlans.length > 0) {
+        if (userPlanData && allPlans.length > 0) {
+
           const planDetail = allPlans.find(plan => plan.planId === userPlanData.planId);
           
           console.log("Found plan details:", planDetail);
-          setPlanDetails(planDetail);
+          setPlanDetails(planDetail);
+
           if (planDetail && (userPlanData.start_date || userPlanData.startDate)) {
             calculateUserStats(userPlanData, planDetail);
           }
         }
-      } else if (Array.isArray(data)) {
+      } else if (Array.isArray(data)) {
+
         const userPlanData = data.find(plan => 
           plan.userId === currentUser.userId || 
           plan.user_id === currentUser.userId
@@ -142,17 +150,21 @@ function UserPlanPage() {
         },
       });
     }
-  };
+  };
+
   const calculateUserStats = (userPlanData, planDetail) => {
     try {
       const startDate = new Date(userPlanData.start_date || userPlanData.startDate);
       const endDate = new Date(userPlanData.end_date || userPlanData.endDate);
-      const today = new Date();
+      const today = new Date();
+
       const timeDiff = endDate.getTime() - today.getTime();
-      const daysRemaining = Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
+      const daysRemaining = Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
+
       const totalDuration = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
       const daysElapsed = totalDuration - daysRemaining;
-      const progress = totalDuration > 0 ? Math.min(100, (daysElapsed / totalDuration) * 100) : 0;
+      const progress = totalDuration > 0 ? Math.min(100, (daysElapsed / totalDuration) * 100) : 0;
+
       const mockAttendance = Math.floor(Math.random() * daysElapsed) + Math.floor(daysElapsed * 0.75);
       const attendancePercentage = daysElapsed > 0 ? (mockAttendance / daysElapsed) * 100 : 0;
       
@@ -165,7 +177,8 @@ function UserPlanPage() {
         planStatus: daysRemaining > 0 ? 'active' : 'expired'
       });
     } catch (error) {
-      console.error("Error calculating user stats:", error);
+      console.error("Error calculating user stats:", error);
+
       setUserStats({
         totalAttendance: 0,
         planDaysRemaining: 0,
@@ -349,7 +362,7 @@ function UserPlanPage() {
             </div>
           </div>
         ) : (
-          /* No Current Plan */
+       
           <div className="text-center py-12">
             <Card className="max-w-md mx-auto bg-[rgba(255,255,255,.04)] border-[rgba(255,255,255,.09)]">
               <CardContent className="py-12">

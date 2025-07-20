@@ -6,6 +6,26 @@ export const menuService = {
     return apiService.get('/menu');
   },
 
+  // Get today's menu
+  getTodayMenu: async () => {
+    const today = new Date();
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const todayName = days[today.getDay()];
+    
+    const response = await apiService.get('/menu');
+    
+    // Handle different response structures
+    let menus = [];
+    if (response.success && Array.isArray(response.data)) {
+      menus = response.data;
+    } else if (Array.isArray(response)) {
+      menus = response;
+    }
+    
+    const todayMenu = menus.find(menu => menu.menu_day === todayName);
+    return todayMenu || null;
+  },
+
   // Get menu by ID
   getMenuById: async (menuId) => {
     return apiService.get(`/menu/${menuId}`);

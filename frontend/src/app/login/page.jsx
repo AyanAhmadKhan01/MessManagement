@@ -63,20 +63,20 @@ export default function Login() {
 
   return (
     <div className="bg-[#141414]">
-      <div className="flex justify-center items-center h-[100vh] bg-[radial-gradient(circle_800px_at_50%_300px,_rgba(16,185,129,0.35),_transparent)]">
+      <div className="flex justify-center items-center h-[100vh]">
         <Card className="w-full max-w-sm">
           <CardHeader>
-            <CardTitle>Login to your account</CardTitle>
+            <CardTitle className={'text-[#ff2056] text-2xl'}>Login to your account</CardTitle>
             <CardDescription>
               Enter your email below to login to your account
             </CardDescription>
             <CardAction>
-              <Button variant="link" type="button" onClick={goToRegister}>Sign Up</Button>
+              <Button variant="link" type="button" className={'cursor-pointer hover:text-[#ff2056]'} onClick={goToRegister}>Sign Up</Button>
             </CardAction>
           </CardHeader>
           <CardContent>
             {errors.general && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4">
+              <div className="border-2 border-red-500 rounded-xl text-red-700 px-4 py-3 mb-4">
                 {errors.general}
               </div>
             )}
@@ -105,13 +105,7 @@ export default function Login() {
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
+                  <Label htmlFor="password">Password</Label>    
                 </div>
                 <div className="relative">
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
@@ -132,11 +126,8 @@ export default function Login() {
                   <span id="password-error" className="text-red-500 text-xs mt-1">{errors.password}</span>
                 )}
               </div>
-              <Button type="submit" className="w-full" disabled={loading}>
+              <Button type="submit" className="w-full bg-[#ff2056] text-white" disabled={loading}>
                 {loading ? 'Logging in...' : 'Login'}
-              </Button>
-              <Button variant="outline" className="w-full">
-                Login with Google
               </Button>
             </form>
           </CardContent>

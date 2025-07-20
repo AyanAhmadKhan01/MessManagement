@@ -11,7 +11,11 @@ import {
     updateUser, 
     deleteUser,
     deleteUserById,
-    resetPassword
+    resetPassword,
+    getUserProfile,
+    updateUserProfile,
+    changeUserPassword,
+    updateNotificationPreferences
 } from "../Controller/userController.js";
 
 const userRoute = Router();
@@ -27,6 +31,12 @@ userRoute.delete("/delete/:email", deleteUser);         // DELETE /users/delete/
 // Additional specific routes
 userRoute.get("/email/:email", getUserByEmail);         // GET /users/email/:email - Get user by email
 userRoute.get("/userId/:userId", getUserByUserId);      // GET /users/userId/:userId - Get user by userId
+
+// Profile-specific routes
+userRoute.get("/profile", getUserProfile);              // GET /users/profile - Get current user profile
+userRoute.patch("/profile", updateUserProfile);         // PATCH /users/profile - Update user profile
+userRoute.patch("/change-password", changeUserPassword); // PATCH /users/change-password - Change password
+userRoute.patch("/notifications", updateNotificationPreferences); // PATCH /users/notifications - Update notification preferences
 
 // RESTful routes (generic routes come LAST)
 userRoute.get("/", getAllUsers);                        // GET /users - Get all users

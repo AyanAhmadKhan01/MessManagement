@@ -39,6 +39,28 @@ const userSchema = new mongoose.Schema({
     cpassword: {
         type: String,
         required: [true, "Please enter a confirm password"],
+    },
+    profilePicture: {
+        type: String,
+        default: null
+    },
+    notificationPreferences: {
+        email: {
+            type: Boolean,
+            default: true
+        },
+        menuUpdates: {
+            type: Boolean,
+            default: true
+        },
+        announcements: {
+            type: Boolean,
+            default: true
+        },
+        planChanges: {
+            type: Boolean,
+            default: true
+        }
     }
 }, {
     timestamps: true

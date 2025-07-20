@@ -9,6 +9,7 @@ export const MENU_KEYS = {
   list: (filters) => [...MENU_KEYS.lists(), { filters }],
   details: () => [...MENU_KEYS.all, 'detail'],
   detail: (id) => [...MENU_KEYS.details(), id],
+  today: () => [...MENU_KEYS.all, 'today'],
 };
 
 // Get all menus
@@ -42,6 +43,17 @@ export const useMenu = (menuId) => {
   });
 };
 
+// Get today's menu
+export const useTodayMenu = () => {
+  return useQuery({
+    queryKey: MENU_KEYS.today(),
+    queryFn: menuService.getTodayMenu,
+    staleTime: 2 * 60 * 1000, // 2 minutes (refresh more frequently for today's menu)
+    cacheTime: 5 * 60 * 1000, // 5 minutes
+    retry: 2,
+  });
+};
+
 // Create menu mutation
 export const useCreateMenu = () => {
   const queryClient = useQueryClient();
@@ -51,6 +63,9 @@ export const useCreateMenu = () => {
     onSuccess: (data) => {
       // Invalidate and refetch menus list
       queryClient.invalidateQueries({ queryKey: MENU_KEYS.lists() });
+      
+      // Invalidate today's menu
+      queryClient.invalidateQueries({ queryKey: MENU_KEYS.today() });
       
       // Also invalidate dashboard stats
       queryClient.invalidateQueries({ queryKey: ['dashboard-stats'] });
@@ -94,6 +109,9 @@ export const useUpdateMenu = () => {
       // Invalidate specific menu detail
       queryClient.invalidateQueries({ queryKey: MENU_KEYS.detail(variables.menuId) });
       
+      // Invalidate today's menu
+      queryClient.invalidateQueries({ queryKey: MENU_KEYS.today() });
+      
       // Also invalidate dashboard stats
       queryClient.invalidateQueries({ queryKey: ['dashboard-stats'] });
       
@@ -135,6 +153,9 @@ export const useDeleteMenu = () => {
       
       // Remove specific menu from cache
       queryClient.removeQueries({ queryKey: MENU_KEYS.detail(menuId) });
+      
+      // Invalidate today's menu
+      queryClient.invalidateQueries({ queryKey: MENU_KEYS.today() });
       
       // Also invalidate dashboard stats
       queryClient.invalidateQueries({ queryKey: ['dashboard-stats'] });
