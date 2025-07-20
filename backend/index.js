@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 import { corsOptions } from './config/corsOptions.js';
 import Connection from './database/db_connect.js';
 
-// Import routes
 import authRoute from './Routes/authRoute.js';
 import userRoute from './Routes/userRoute.js';
 import planRoute from './Routes/planRoute.js';
@@ -14,17 +13,15 @@ import userplanRoute from './Routes/userPlanRoute.js';
 
 dotenv.config();
 
-// Create Express app
 const app = express();
 
-// CORS configuration
+
 app.use(cors(corsOptions));
 
-// Middleware
+
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Health check endpoint
 app.get('/health', (req, res) => {
     res.json({ 
         success: true, 
@@ -34,7 +31,6 @@ app.get('/health', (req, res) => {
     });
 });
 
-// Root endpoint
 app.get('/', (req, res) => {
     res.json({
         success: true,
@@ -54,15 +50,14 @@ app.get('/', (req, res) => {
     });
 });
 
-// API routes
-app.use('/auth', authRoute);            // Authentication
-app.use('/users', userRoute);           // User management
-app.use('/plan', planRoute);            // Plan management
-app.use('/menu', menuRoute);            // Menu management  
-app.use('/inventory', inventoryRoute);  // Inventory management
-app.use('/userplan', userplanRoute);    // User plan management
+app.use('/auth', authRoute);           
+app.use('/users', userRoute);          
+app.use('/plan', planRoute);            
+app.use('/menu', menuRoute);            
+app.use('/inventory', inventoryRoute); 
+app.use('/userplan', userplanRoute);    
 
-// 404 handler for undefined routes
+
 app.use('*', (req, res) => {
     res.status(404).json({
         success: false,
@@ -79,9 +74,8 @@ app.use('*', (req, res) => {
     });
 });
 
-// Global error handling middleware
 app.use((err, req, res, next) => {
-    console.error('❌ Global Error:', err.stack);
+    console.error('Global Error:', err.stack);
     res.status(500).json({
         success: false,
         message: 'Something went wrong!',
@@ -90,10 +84,10 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Connect to database
+
 Connection();
 
-// Start server
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log('🎉🎉🎉 FRESH MESS MANAGEMENT BACKEND STARTED! 🎉🎉🎉');
@@ -111,16 +105,16 @@ app.listen(PORT, () => {
     console.log('🚀 Ready to serve the frontend at http://localhost:3000');
 });
 
-// Handle unhandled promise rejections
+
 process.on('unhandledRejection', (err) => {
-    console.error('🚨 UNHANDLED REJECTION! 💥');
+    console.error('🚨 UNHANDLED REJECTION!');
     console.error(err.name, err.message);
     process.exit(1);
 });
 
-// Handle uncaught exceptions  
+
 process.on('uncaughtException', (err) => {
-    console.error('🚨 UNCAUGHT EXCEPTION! 💥');
+    console.error('🚨 UNCAUGHT EXCEPTION!');
     console.error(err.name, err.message);
     process.exit(1);
 });
