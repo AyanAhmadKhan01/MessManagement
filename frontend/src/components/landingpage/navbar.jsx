@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X, Home, Rocket, HelpCircle, Phone } from "lucide-react";
-import { ModeToggle } from "@/app/modeToggle";
 import { Button } from "../ui/button";
 
 export default function Navbar() {
@@ -77,7 +76,6 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-3 transition-all duration-300">
-            <ModeToggle />
             <Button className="cursor-pointer transition-all duration-300">
               <Link href="/dashboard">Login</Link>
             </Button>
@@ -107,7 +105,7 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="flex justify-between items-center pt-2">
-              <ModeToggle />
+             
               <Button className="w-fit px-4">
                 <Link href="/dashboard">Login</Link>
               </Button>

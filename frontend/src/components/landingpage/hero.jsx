@@ -18,7 +18,7 @@ export default function Hero() {
             <div className="flex justify-between items-center mt-5 mb-7 px-4 py-1 rounded-4xl bg-[rgba(255,255,255,.02)] border-1 border-[rgba(255,255,255,.05)]">
               <p className="tracking-tighter text-[15px] text-ring">Join Other 1K People</p>
               <Avatar className="scale-75">
-                <AvatarImage src="https://media.licdn.com/dms/image/v2/D4E03AQG63jnBoDdN2w/profile-displayphoto-shrink_800_800/B4EZYAviTaHgAc-/0/1743769184262?e=1756339200&v=beta&t=w4O0Mgwu_DN8hh6O3PYvXlLouJRmnLG7LQGl1qxYeIU" />
+                <AvatarImage src="https://pbs.twimg.com/profile_images/1944031925657907201/2stC94Mk_400x400.jpg" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
               <Avatar className="scale-75 -ml-3">

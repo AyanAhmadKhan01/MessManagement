@@ -12,7 +12,6 @@ export default function Home() {
 <div className="max-w-[1400px] w-[100%] m-auto">
     <Navbar/>
      <Hero/>
-
      <BentoCard/>
      <HowItWorks/>
      <Faq/>
