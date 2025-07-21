@@ -42,7 +42,7 @@ function ManageUsers() {
   const fetchUsers = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('http://localhost:5000/users/getusers');
+      const response = await fetch(`${BASE}/users/getusers`);
       if (response.ok) {
         const data = await response.json();
         setUsers(data || []);
@@ -67,7 +67,7 @@ function ManageUsers() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/users/signup', {
+      const response = await fetch(`${BASE}/users/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ function ManageUsers() {
     e.preventDefault();
     
     try {
-      const response = await fetch(BASE, {
+      const response = await fetch(`${BASE}/users/update/${editingUser.userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -144,7 +144,7 @@ function ManageUsers() {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/users/delete/${userEmail}`, {
+      const response = await fetch(`${BASE}/users/delete/${userEmail}`, {
         method: 'DELETE',
       });
 
@@ -179,7 +179,6 @@ function ManageUsers() {
     }
   };
 
-  // Filter users based on search term
   const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     user.email.toLowerCase().includes(searchTerm.toLowerCase())
@@ -198,14 +197,14 @@ function ManageUsers() {
 
   return (
     <div className="min-h-screen bg-[#0d0d0d] text-white p-6">
-      {/* Header */}
+      
       <div className="flex justify-between items-center mb-6">
         <div>
           <h1 className="text-4xl font-bold text-[#FF0049] mb-2">Manage Users</h1>
           <p className="text-gray-400">Create and manage user accounts</p>
         </div>
         
-        {/* Create User Dialog */}
+     
         <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
           <DialogTrigger asChild>
             <Button className="bg-[#FF0049] hover:bg-[#E60041] text-white">
@@ -292,7 +291,7 @@ function ManageUsers() {
         </Dialog>
       </div>
 
-      {/* Search */}
+    
       <div className="mb-6 relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
         <Input
@@ -303,7 +302,7 @@ function ManageUsers() {
         />
       </div>
 
-      {/* Stats Cards */}
+   
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         <Card className="bg-[rgba(255,255,255,.04)] border-[rgba(255,255,255,.09)] backdrop-blur-xl">
           <CardContent className="p-6 text-center">
@@ -381,7 +380,7 @@ function ManageUsers() {
         ))}
       </div>
 
-      {/* Empty State */}
+      
       {filteredUsers.length === 0 && !isLoading && (
         <div className="text-center py-12">
           <Users className="h-16 w-16 text-gray-600 mx-auto mb-4" />
@@ -394,7 +393,7 @@ function ManageUsers() {
         </div>
       )}
 
-      {/* Edit User Dialog */}
+
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
         <DialogContent className="bg-[#1a1a1a] border border-[#ffffff0f] text-white">
           <DialogHeader>
