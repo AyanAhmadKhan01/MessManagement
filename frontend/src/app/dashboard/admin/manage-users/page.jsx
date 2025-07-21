@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import withAuth from "@/components/withAuth";
 import { toast } from 'react-toastify';
+import { BASE } from "@/utils/baseURL";
 
 function ManageUsers() {
   const [users, setUsers] = useState([]);
@@ -34,7 +35,6 @@ function ManageUsers() {
     role: "0"
   });
 
-  // Fetch users on component mount
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -86,7 +86,7 @@ function ManageUsers() {
           cpassword: "",
           role: "0"
         });
-        fetchUsers(); // Refresh users list
+        fetchUsers(); 
       } else {
         const error = await response.json();
         throw new Error(error.message || 'Failed to create user');
@@ -112,7 +112,7 @@ function ManageUsers() {
     e.preventDefault();
     
     try {
-      const response = await fetch(`http://localhost:5000/users/update/${editingUser.userId}`, {
+      const response = await fetch(BASE, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
