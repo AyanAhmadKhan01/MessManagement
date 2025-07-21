@@ -1,5 +1,7 @@
 // Fresh backend URL for all APIs (NEW CLEAN BACKEND!)
-export const PLAN_BASE = 'http://localhost:5000/plan';
+import { BASE } from "@/utils/baseURL";
+
+export const PLAN_BASE = `${BASE}/plan`;
 
 // Fresh backend URL
-export const BASE = 'http://localhost:5000';
+export const BASE = BASE;

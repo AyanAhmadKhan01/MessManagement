@@ -1,9 +1,10 @@
 // Test script to verify authentication endpoints
 // Run this with: node test-auth.js
+import { BASE } from "@/utils/baseURL";
 
 import fetch from 'node-fetch';
 
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = BASE ;
 
 async function testAuth() {
     console.log('🔧 Testing Authentication Endpoints...\n');

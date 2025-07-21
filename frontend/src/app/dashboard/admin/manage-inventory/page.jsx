@@ -15,6 +15,7 @@ import { CreateInventoryDialog } from "@/components/inventory/CreateInventoryDia
 import { EditInventoryDialog } from "@/components/inventory/EditInventoryDialog";
 import { InventoryTabs } from "@/components/inventory/InventoryTabs";
 
+
 function ManageInventory() {
   const { data: inventory = [], isLoading, error } = useInventory();
   const { data: stats, isLoading: statsLoading } = useInventoryStats();

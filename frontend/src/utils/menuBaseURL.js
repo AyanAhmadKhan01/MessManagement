@@ -1,7 +1,9 @@
 // Fresh backend URL for menu API (NEW CLEAN BACKEND!)
-export const MENU_BASE = 'http://localhost:5000/menu';
+import { BASE } from "@/utils/baseURL";
+
+export const MENU_BASE = `${BASE}/menu`;
 
 // Fresh backend URL
-export const BASE = 'http://localhost:5000';
+export const BASE = BASE;
 
 // Note: Now using the consolidated MVC backend at port 5000

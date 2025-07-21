@@ -1,7 +1,9 @@
 // Fresh backend URL for user plan API (NEW CLEAN BACKEND!)
-export const USERPLAN_BASE = "http://localhost:5000/userplan";
+import { BASE } from "@/utils/baseURL";
+
+export const USERPLAN_BASE = `${BASE}/userplan`;
 
 // Fresh backend URL
-export const BASE = 'http://localhost:5000';
+export const BASE = BASE;
 
 // Note: Now using the consolidated MVC backend at port 5000

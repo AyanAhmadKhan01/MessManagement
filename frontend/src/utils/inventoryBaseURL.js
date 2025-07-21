@@ -1,7 +1,9 @@
 // Fresh backend URL for inventory API (NEW CLEAN BACKEND!)
-export const INVENTORY_BASE = 'http://localhost:5000/inventory';
+import { BASE } from "@/utils/baseURL";
+
+export const INVENTORY_BASE = `${BASE}/inventory`;
 
 // Fresh backend URL
-export const BASE = 'http://localhost:5000';
+export const BASE = BASE;
 
 // Note: Now using the consolidated MVC backend at port 5000
