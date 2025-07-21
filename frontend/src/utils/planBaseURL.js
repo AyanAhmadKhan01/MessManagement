@@ -4,4 +4,4 @@ import { BASE } from "@/utils/baseURL";
 export const PLAN_BASE = `${BASE}/plan`;
 
 // Fresh backend URL
-export const BASE = BASE;
+export const BASE =  `${BASE}`;
