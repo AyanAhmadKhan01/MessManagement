@@ -67,7 +67,6 @@ function ManageInventory() {
 
   return (
     <div className="min-h-screen bg-[#0d0d0d] text-white p-6">
-      {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
           <h1 className="text-4xl font-bold text-[#FF0049] mb-2">Manage Inventory</h1>
@@ -75,11 +74,9 @@ function ManageInventory() {
         </div>
         <CreateInventoryDialog createMutation={createMutation} />
       </div>
-
-      {/* Stats */}
+  
       <InventoryStats stats={stats} isLoading={statsLoading} />
-
-      {/* Inventory Tabs */}
+     
       <InventoryTabs
         inventory={inventory}
         activeTab={activeTab}
@@ -89,7 +86,7 @@ function ManageInventory() {
         isDeleting={deleteMutation.isPending}
       />
 
-      {/* Edit Dialog */}
+      
       <EditInventoryDialog
         item={editingItem}
         isOpen={isEditDialogOpen}

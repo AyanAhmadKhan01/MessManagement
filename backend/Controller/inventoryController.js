@@ -92,7 +92,7 @@ export const createInventoryItem = asyncHandler(async (req, res) => {
 export const updateInventoryItem = asyncHandler(async (req, res) => {
     try {
         const { inventoryId } = req.params;
-        const { name, storeType, qty, usedqty, single_price, date } = req.body;
+        const { name, storeType, qty, usedqty, single_price, date, remainqty } = req.body;
         console.log(`PATCH /inventory/${inventoryId} - Updating inventory item:`, { name, storeType, qty, usedqty, single_price, date });
 
         // Check if item exists
@@ -107,7 +107,7 @@ export const updateInventoryItem = asyncHandler(async (req, res) => {
             {
                 name: name || existingItem.name,
                 storeType: storeType || existingItem.storeType,
-                qty: qty ? parseInt(qty) : existingItem.qty,
+                qty: remainqty,
                 usedqty: usedqty !== undefined ? parseInt(usedqty) : existingItem.usedqty,
                 single_price: single_price ? parseFloat(single_price) : existingItem.single_price,
                 date: date ? new Date(date) : existingItem.date
