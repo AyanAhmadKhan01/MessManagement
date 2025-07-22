@@ -11,7 +11,7 @@ const getStockStatus = (remainqty) => {
 
 export const InventoryItemCard = ({ item, onEdit, onDelete, isDeleting }) => {
   const stockInfo = getStockStatus(item.remainqty);
-
+  
   return (
     <Card className="bg-[rgba(255,255,255,.06)] border-[rgba(255,255,255,.12)] hover:border-[#FF0049]/40 transition-all duration-300">
       <CardHeader className="pb-3">

@@ -88,7 +88,7 @@ export const createInventoryItem = asyncHandler(async (req, res) => {
     }
 });
 
-// Update inventory item
+
 export const updateInventoryItem = asyncHandler(async (req, res) => {
     try {
         const { inventoryId } = req.params;
@@ -107,7 +107,8 @@ export const updateInventoryItem = asyncHandler(async (req, res) => {
             {
                 name: name || existingItem.name,
                 storeType: storeType || existingItem.storeType,
-                qty: remainqty,
+                qty: qty ? parseInt(qty) : existingItem.qty,
+                remainqty: remainqty,
                 usedqty: usedqty !== undefined ? parseInt(usedqty) : existingItem.usedqty,
                 single_price: single_price ? parseFloat(single_price) : existingItem.single_price,
                 date: date ? new Date(date) : existingItem.date
