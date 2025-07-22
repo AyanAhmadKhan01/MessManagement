@@ -1,1 +1,1 @@
-export const BASE= 'http://localhost:5000';
+export const BASE= 'https://messmanagement-backend-22bu.onrender.com';
