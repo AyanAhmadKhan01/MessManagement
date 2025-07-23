@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/accordion"
 
 import {
-  ScanLine,
+  Boxes,
   BarChart2,
   ShieldCheck,
   Settings
@@ -16,10 +16,10 @@ export default function Faq() {
   const ffa = [
     {
       value: 'item-1',
-      heading: 'Instant QR Attendance',
-      icon: 'ScanLine',
-      para: 'Easily mark attendance by scanning a unique QR code at each table. No login or extra steps required—just point, scan, and you’re done.',
-      secondPara: 'This system ensures accuracy and speed, reducing wait times and simplifying the process for both users and admins.'
+      heading: 'Mess Inventory Management',
+      icon: 'Boxes',
+      para: 'Admins can easily monitor and manage the mess inventory with categorized item listings. Whether it’s groceries, utensils, or daily supplies, items can be added, removed, or updated in real-time.',
+      secondPara: 'This ensures better tracking, reduces waste, and simplifies procurement for the mess facility.'
     },
     {
       value: 'item-2',
@@ -39,7 +39,7 @@ export default function Faq() {
       value: 'item-4',
       heading: 'Easy Setup & Customization',
       icon: 'Settings',
-      para: 'Deploy in minutes with no technical setup required. Customize your QR design, attendance limits, or access roles from the admin panel.',
+      para: 'Deploy in minutes with no technical setup required. Attendance limits, or access roles from the admin panel.',
       secondPara: 'Whether you\'re hosting a one-time event or running daily check-ins, you can tailor the system to your needs effortlessly.'
     }
   ];
