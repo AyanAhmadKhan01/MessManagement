@@ -8,7 +8,7 @@ export default function Contact() {
 
   return (
     <>
-      {showForm && (
+      {/* {showForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
           <div className="w-full max-w-[700px] bg-[rgba(255,255,255,.05)] border border-[rgba(255,255,255,.1)] px-6 py-10 sm:px-10 rounded-2xl backdrop-blur-md relative">
             <button
@@ -67,7 +67,7 @@ export default function Contact() {
         >
           Let&apos;s Chat
         </a>
-      </div>
+      </div> */}
     </>
   )
 }
