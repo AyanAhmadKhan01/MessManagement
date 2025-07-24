@@ -30,6 +30,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+
   if (!mounted) {
     return (
       <div id="home" className="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out">
@@ -55,9 +56,12 @@ export default function Navbar() {
             scrolled ? 'max-w-[1240px] ' : 'max-w-[1200px]'
           } w-full mx-auto mt-4 px-4 py-3.5 rounded-3xl bg-[rgba(255,255,255,.04)] border border-[rgba(255,255,255,.07)] backdrop-blur-md`}
         >
+          <div className="flex items-center">
+           <img src="https://res.cloudinary.com/dt5qoqw6u/image/upload/v1753380299/x5pnu66aiazzm7ne0yjq.png" className="w-12 scale-[3.5] mr-2" />
           <h1 className={`font-bold transition-all duration-300 ${scrolled ? 'text-sm' : 'text-base'}`}>
-            Mess Management
+           {scrolled ? '' : 'Mess Management'} 
           </h1>
+          </div>
 
           <div className="hidden md:flex justify-between ml-3">
             {navButton.map((l, i) => (

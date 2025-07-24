@@ -61,12 +61,12 @@ export default function Contact() {
         <p className="mb-8 text-ring max-w-[550px] text-center w-full px-2">
           Got a question? Just reach out—we’d love to hear from you!
         </p>
-        <button
-          onClick={() => setShowForm(true)}
-          className="text-[18px] bg-chart-5 px-6 py-3 rounded-xl cursor-pointer"
+        <a
+          href="mailto:anasnajam14@gmail.com"
+          className="text-[18px] bg-chart-5 px-6 py-3 rounded-xl cursor-pointer inline-block"
         >
           Let&apos;s Chat
-        </button>
+        </a>
       </div>
     </>
   )

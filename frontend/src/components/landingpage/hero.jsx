@@ -2,6 +2,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ArrowBigRightDash } from "lucide-react"
+import Link from "next/link"
 
 export default function Hero() {
   return (
@@ -12,8 +13,9 @@ export default function Hero() {
             background:
               "radial-gradient(ellipse 80% 60% at 50% 95%, rgba(244, 114, 182, 0.25), transparent 70%), #000000",
           }}
-          className="absolute inset-0 -z-1"
+          className="absolute inset-0 -z-30"
         >
+             </div>
          <div className="flex flex-col items-center mt-[250px] px-4">
             <div className="flex justify-between items-center mt-5 mb-7 px-4 py-1 rounded-4xl bg-[rgba(255,255,255,.02)] border-1 border-[rgba(255,255,255,.05)]">
               <p className="tracking-tighter text-[15px] text-ring">Join Other 1K People</p>
@@ -54,17 +56,18 @@ export default function Hero() {
             }}>
               Each table has a unique QR code to quickly mark attendance. Log meals, manage funds, and monitor daily analytics — all in one simple app.
             </p>
+            <Link href={"#howitworks"}>
             <button
               className="mt-10 px-6 py-3 rounded-2xl cursor-pointer text-white bg-chart-5"
               style={{
-                fontSize: 'clamp(1rem, 2vw, 1.25rem)'
+                fontSize: 'clamp(1rem, 2vw, 1.25rem)',
               }}
             >
               Get Started
             </button>
+            </Link>
           </div>
         </div>
-      </div>
     </>
   )
 }

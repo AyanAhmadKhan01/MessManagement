@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/accordion"
 
 import {
-  Boxes,
+  Box,
   BarChart2,
   ShieldCheck,
   Settings
@@ -17,7 +17,7 @@ export default function Faq() {
     {
       value: 'item-1',
       heading: 'Mess Inventory Management',
-      icon: 'Boxes',
+      icon: 'Box',
       para: 'Admins can easily monitor and manage the mess inventory with categorized item listings. Whether it’s groceries, utensils, or daily supplies, items can be added, removed, or updated in real-time.',
       secondPara: 'This ensures better tracking, reduces waste, and simplifies procurement for the mess facility.'
     },
@@ -65,7 +65,7 @@ export default function Faq() {
             value={f.value}
           >
             <AccordionTrigger className="flex justify-between items-center bg-[rgba(255,255,255,.05)] p-4 border border-[rgba(255,255,255,.03)] text-left">
-              {f.icon === 'ScanLine' && <ScanLine className="w-6 h-6 text-primary mr-2" />}
+              {f.icon === 'Box' && <Box className="w-6 h-6 text-primary mr-2" />}
               {f.icon === 'BarChart2' && <BarChart2 className="w-6 h-6 text-primary mr-2" />}
               {f.icon === 'ShieldCheck' && <ShieldCheck className="w-6 h-6 text-primary mr-2" />}
               {f.icon === 'Settings' && <Settings className="w-6 h-6 text-primary mr-2" />}
