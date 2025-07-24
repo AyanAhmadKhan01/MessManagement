@@ -109,12 +109,12 @@ export default function DashboardLayout({ children }) {
           icon: Calendar,
           description: "Your attendance",
         },
-        {
-          name: "Profile",
-          href: "/dashboard/profile",
-          icon: User,
-          description: "Your account",
-        },
+        // {
+        //   name: "Profile",
+        //   href: "/dashboard/profile",
+        //   icon: User,
+        //   description: "Your account",
+        // },
       ];
     }
   };
