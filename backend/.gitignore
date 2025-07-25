@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# Next.js build output
+.next/
+out/
+
+# Turbopack cache
+.next-turbo/
+.cache/
+
+# Environment files
+.env
+.env.*
+
+# Distribution/build folders
+build/
+dist/
+
+# Coverage reports
+coverage/
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# SSL keys
+*.key
+*.pem
