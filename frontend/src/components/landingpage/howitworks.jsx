@@ -11,8 +11,8 @@ export default function HowItWorks() {
         <div className="w-full max-w-[1300px] aspect-video px-4 sm:px-6 md:px-8">
           <iframe
             className="w-full h-full border-2 border-[rgba(255,255,255,.05)] rounded-2xl"
-            src="https://www.youtube.com/embed/u69IWpE3fL0?si=iUcYr6d400ltUjUC"
-            title="YouTube video player"
+            src="https://player.cloudinary.com/embed/?cloud_name=dt5qoqw6u&public_id=mess_-_1_ad65tu&profile=cld-default"
+            title="video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           ></iframe>
         </div>
