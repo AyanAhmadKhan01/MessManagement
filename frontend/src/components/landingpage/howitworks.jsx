@@ -9,12 +9,7 @@ export default function HowItWorks() {
           Watch this quick demo to see how our solution works in real time. It’s designed to be seamless and intuitive from start to finish.
         </p>
         <div className="w-full max-w-[1300px] aspect-video px-4 sm:px-6 md:px-8">
-          <iframe
-            className="w-full h-full border-2 border-[rgba(255,255,255,.05)] rounded-2xl"
-            src="https://player.cloudinary.com/embed/?cloud_name=dt5qoqw6u&public_id=mess_-_1_ad65tu&profile=cld-default"
-            title="video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          ></iframe>
+           <video className="rounded-2xl" controls loop src="https://res.cloudinary.com/dt5qoqw6u/video/upload/v1753484191/Untitled_design_1_hr4ple.mp4"></video>
         </div>
       </div>    
     </>
