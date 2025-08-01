@@ -2,6 +2,13 @@
 
 A full-stack web application for managing mess operations, including user attendance, meal planning, inventory, and user subscriptions. Built with Node.js (Express, MongoDB) for the backend and Next.js (React, Tailwind CSS) for the frontend.
 
+## 🤝 Contributors
+
+| Name            | Contributions                                                                 |
+|-----------------|--------------------------------------------------------------------------------|
+| **Anas Najam**  | Built the entire backend (APIs, DB models, routes), designed the **Admin Dashboard**, and created the **data flow diagrams (DFD & ER)** for system planning and documentation. |
+| **Ayan Ahmad Khan** | Developed the **User Dashboard**, designed the **Landing Page** and handled **SEO**, **Authentication**, and **Deployment**. |
+
 ## Features
 
 ### User Features
